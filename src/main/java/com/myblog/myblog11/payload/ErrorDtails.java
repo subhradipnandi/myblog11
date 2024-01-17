@@ -11,6 +11,6 @@ import java.util.Date;
 @AllArgsConstructor
 public class ErrorDtails {
     private String message;
-    private Date data;
+    private Date date;
     private String uri;
 }
