@@ -40,9 +40,13 @@ public class PostController {
     }
 
 
+//    http://localhost:8085/api/posts?pageNo=0&pageSize=3
     @GetMapping
-    public List<PostDto> getAllPost(){
-        List<PostDto> postDtos = postService.getAllPost();
+    public List<PostDto> getAllPost(
+            @RequestParam(name = "pageNo", required = false, defaultValue = "0") int pageNo,
+            @RequestParam(name = "pageSize", required = false, defaultValue = "3") int pageSize
+    ){
+        List<PostDto> postDtos = postService.getAllPost(pageNo, pageSize);
         return postDtos;
     }
     //here we don't use ResponseEntity because any way by default response being 200 and the list will return all the list of datas
