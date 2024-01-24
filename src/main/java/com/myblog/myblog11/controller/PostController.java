@@ -40,16 +40,19 @@ public class PostController {
     }
 
 
-//    http://localhost:8085/api/posts?pageNo=0&pageSize=3
+//    http://localhost:8085/api/posts?pageNo=0&pageSize=5&sortBy=title&sortDir=desc
     @GetMapping
     public List<PostDto> getAllPost(
             @RequestParam(name = "pageNo", required = false, defaultValue = "0") int pageNo,
-            @RequestParam(name = "pageSize", required = false, defaultValue = "3") int pageSize
+            @RequestParam(name = "pageSize", required = false, defaultValue = "3") int pageSize,
+            @RequestParam(name = "sortBy", required = false, defaultValue = "id") String sortBy,
+            @RequestParam(name = "sortDir", required = false, defaultValue = "id") String sortDir
     ){
-        List<PostDto> postDtos = postService.getAllPost(pageNo, pageSize);
+        List<PostDto> postDtos = postService.getAllPost(pageNo, pageSize, sortBy, sortDir);
         return postDtos;
     }
     //here we don't use ResponseEntity because any way by default response being 200 and the list will return all the list of datas
+
 
 
 }
