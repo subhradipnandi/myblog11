@@ -1,6 +1,5 @@
 package com.myblog.myblog11.controller;
 
-import com.myblog.myblog11.entity.Post;
 import com.myblog.myblog11.payload.PostDto;
 import com.myblog.myblog11.service.PostService;
 import org.springframework.http.HttpStatus;
