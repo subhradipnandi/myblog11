@@ -37,6 +37,7 @@ public class PostServiceImpl implements PostService {
         Post savedPost = postRepository.save(post);
 
         PostDto dto = mapToDto(savedPost);
+
 //        PostDto dto = new PostDto();
 //        dto.setTitle(savedPost.getTitle());
 //        dto.setDescription(savedPost.getDescription());
@@ -62,7 +63,7 @@ public class PostServiceImpl implements PostService {
 
     @Override
     public List<PostDto> getAllPost(int pageNo, int pageSize, String sortBy, String sortDir) {
-        Sort sort = (sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()))?Sort.by(sortBy).ascending():Sort.by(sortBy).descending();
+        Sort sort = (sortDir.equalsIgnoreCase(Sort.Direction.DESC.name()))?Sort.by(sortBy).descending():Sort.by(sortBy).ascending();
         Pageable pageable = PageRequest.of(pageNo, pageSize, /*Sort.by(sortBy)*/ sort);
         Page<Post> pagePost = postRepository.findAll(pageable);
         List<Post> posts = pagePost.getContent();
